@@ -1,0 +1,55 @@
+{
+  "name": "roll-your-own",
+  "version": "1.0.0",
+  "description": "react/express/sequelize/postgres boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "build-client": "webpack",
+    "build-client-watch": "webpack -w",
+    "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
+    "start-dev": "npm run build-client-watch & npm run start-server",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./server/index.js && webpack serve",
+    "dev": "nodemon ./server/index.js",
+    "serve": "webpack serve --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KyleLee95/roll-your-own.git"
+  },
+  "author": "Kyle Lee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KyleLee95/roll-your-own/issues"
+  },
+  "homepage": "https://github.com/KyleLee95/roll-your-own#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "css-loader": "^6.7.1",
+    "express": "^4.18.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-router-dom": "^6.3.0",
+    "sass": "^1.52.2",
+    "sass-loader": "^13.0.0",
+    "webpack": "^5.73.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/plugin-proposal-class-properties": "^7.17.12",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-react": "^7.17.12",
+    "@babel/preset-typescript": "^7.17.12",
+    "babel-loader": "^8.2.5",
+    "eslint": "^8.17.0",
+    "eslint-plugin-react": "^7.30.0",
+    "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "nodemon": "^2.0.16",
+    "prettier": "^2.6.2",
+    "style-loader": "^3.3.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.2"
+  }
+}
