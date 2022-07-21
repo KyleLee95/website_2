@@ -1,6 +1,11 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+//isDev is set in the package.json start script.
+//This determines what features of webpack will run
+const isDev = process.env.NODE_ENV === 'development';
 module.exports = {
+  mode: isDev ? 'development' : 'production',
   entry: ['./src/index.js'],
   output: {
     path: __dirname,
@@ -21,5 +26,5 @@ module.exports = {
       },
     ],
   },
-  plugins: [new MiniCssExtractPlugin()],
+  plugins: [new MiniCssExtractPlugin({ filename: './public/main.css' })],
 };
