@@ -49,8 +49,24 @@ const createApp = () => {
 const syncDb = () => db.sync();
 const startListening = () => {
   const server = app.listen(port, () => {
-    console.log(`listening on port: ${port}`);
+    console.log('\x1b[36m%s\x1b[0m', `LISTENING ON PORT: ${port}`);
   });
 };
-startListening();
-createApp();
+
+async function bootApp() {
+  await sessionStore.sync();
+  await syncDb();
+  await createApp();
+  await startListening();
+}
+
+// This evaluates as true when this file is run directly from the command line,
+// i.e. when we say 'node server/index.js' (or 'nodemon server/index.js', or 'nodemon server', etc)
+// It will evaluate false when this module is required by another module - for example,
+// if we wanted to require our app in a test spec
+if (require.main === module) {
+  bootApp();
+} else {
+  startListening();
+  createApp();
+}
