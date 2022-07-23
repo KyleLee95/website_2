@@ -1,9 +1,9 @@
 import React from 'react';
-
+import { RoutesManager } from './Routes';
 export const App = () => {
   return (
     <div>
-      <h1>hello!</h1>
+      <RoutesManager />
     </div>
   );
 };
