@@ -8,7 +8,7 @@
     "build-client-watch": "webpack -w",
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
     "start-dev": "NODE_ENV='development' npm run build-client-watch & NODE_ENV='development' npm run start-server",
-    "test": "NODE_ENV='test' mocha \"./server/**/*.spec.js\" \"./client/**/*.spec.js\" \"./script/**/*.spec.js\"",
+    "test": "NODE_ENV='test' mocha \"./server/**/*.spec.js\" \"./src/**/*.spec.js\" \"./script/**/*.spec.js\"",
     "start": "node ./server/index.js",
     "seed": "node ./scripts/seed.js"
   },
