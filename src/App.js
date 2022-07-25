@@ -4,6 +4,7 @@ import { RoutesManager } from './RoutesManager';
 
 export const App = (props) => {
   const value = useContext(AuthContext);
+
   return (
     <div>
       <AuthContext.Provider value="test">
