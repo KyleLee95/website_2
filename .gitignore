@@ -1,3 +1,6 @@
 secrets.js
 webpack.config.js
 .env
+node_modules
+public/bundle.js
+public/bundle.js.map
