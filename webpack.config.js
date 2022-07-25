@@ -1,6 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+const Dotenv = require('dotenv-webpack');
 //isDev is set in the package.json start script.
 //This determines what features of webpack will run
 const isDev = process.env.NODE_ENV === 'development';
@@ -26,5 +26,8 @@ module.exports = {
       },
     ],
   },
-  plugins: [new MiniCssExtractPlugin({ filename: './public/main.css' })],
+  plugins: [
+    new MiniCssExtractPlugin({ filename: './public/main.css' }),
+    new Dotenv(),
+  ],
 };
