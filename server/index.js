@@ -22,6 +22,11 @@ const createApp = () => {
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')));
 
+  // sends index.html. index.html is the entry point of the client side application. When it the browser hits the <script/> tag, that's when the webpack bundle is executed and the app loads.
+  app.use('*', (req, res) => {
+    const publicPath = path.join(__dirname, '..', 'public/index.html');
+    res.sendFile(path.join(__dirname, '..', 'public/index.html'));
+  });
   // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {
     if (path.extname(req.path).length) {
@@ -31,12 +36,6 @@ const createApp = () => {
     } else {
       next();
     }
-  });
-
-  // sends index.html. index.html is the entry point of the client side application. When it the browser hits the <script/> tag, that's when the webpack bundle is executed and the app loads.
-  app.use('*', (req, res) => {
-    const publicPath = path.join(__dirname, '..', 'public/index.html');
-    res.sendFile(path.join(__dirname, '..', 'public/index.html'));
   });
 
   // error handling endware

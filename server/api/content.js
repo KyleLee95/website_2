@@ -16,8 +16,9 @@ router.get(
     const { preview, ...query } = req.query;
 
     try {
+      //get gross raw JSON from contentful servers
       const rawData = await contentful.client({ preview }).getEntries(query);
-      //remove unused fields and make more usable on clientside
+      //remove unused fields and make more usable for clientside
       const data = contentful.client().parseEntries(rawData);
       res.status(200).json(data);
     } catch (err) {

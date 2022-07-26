@@ -1,20 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { RoutesManager } from './RoutesManager';
+import { Sidebar } from './Sidebar';
 import { fetchContent } from './utils/content-utils';
 export const App = (props) => {
-  const [projects, setProjects] = useState(null);
+  const [navBarItems, setNavBarItems] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    const getProjects = async () => {
-      const projects = await fetchContent({ content_type: 'project' });
-
-      setProjects(projects);
+    const getData = async () => {
+      const sidebarLinks = await fetchContent({ content_type: 'navbarItems' });
+      setNavBarItems(sidebarLinks);
+      setIsLoading(false);
     };
-    getProjects();
+    getData();
   }, []);
-  console.log(projects);
+
+  if (isLoading) {
+    return null;
+  }
   return (
-    <div>
-      <RoutesManager />
+    <div className="grid-container">
+      <div className="grid-item-1">
+        <Sidebar navBarItems={navBarItems} />
+      </div>
+      <div className="grid-item-1">
+        <RoutesManager />
+      </div>
     </div>
   );
 };
