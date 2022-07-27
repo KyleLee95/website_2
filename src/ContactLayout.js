@@ -26,21 +26,15 @@ export const ContactLayout = (props) => {
         } = item
         if (title === 'email') {
           return (
-            <div>
-              {title}:{' '}
-              <a key={i} href={'mailto:' + link}>
-                {link}
-              </a>
+            <div key={i}>
+              {title}: <a href={'mailto:' + link}>{link}</a>
               <br />
             </div>
           )
         }
         return (
-          <div>
-            {title}:{' '}
-            <a key={i} href={link}>
-              {link}
-            </a>
+          <div key={i}>
+            {title}: <a href={link}>{link}</a>
             <br />
           </div>
         )

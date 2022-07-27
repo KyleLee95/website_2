@@ -95,15 +95,23 @@ export const Home = () => {
         })}
       </Canvas>
       <br />
-      Fib Num
-      <input
-        onChange={(e) => handleFib(e)}
-        value={fibNumber}
-        type="range"
-        min={0}
-        max={10}
-      />
-      {fibNumber}
+      <span>
+        Fib Num
+        <input
+          onChange={(e) => handleFib(e)}
+          value={fibNumber}
+          type="range"
+          min={0}
+          max={10}
+        />
+        {fibNumber}
+      </span>
+      <p>Fibonacci Sequence visualized in 3D up to 10.</p>
+      <p>
+        Move the slider to trigger the visualization. Move the camera in the 3D
+        viewer on desktop with left click / scroll. Pinch to zoom in/out on
+        mobile
+      </p>
     </div>
   )
 }
