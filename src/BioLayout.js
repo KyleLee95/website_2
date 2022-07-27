@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { fetchContent } from './utils/content-utils';
 import { Paragraph } from './components/Paragraph';
+
 export const BioLayout = (props) => {
   const [about, setAbout] = useState(null);
-  const [isLoading, setIsLoading] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     document.title = 'Bio | Kyle Lee';
     const getData = async () => {
-      const projects = await fetchContent({ content_type: 'about' });
-      setAbout(projects);
+      const about = await fetchContent({ content_type: 'about' });
+      setAbout(about);
+      setIsLoading(false);
     };
     getData();
   }, []);
@@ -29,8 +32,8 @@ export const BioLayout = (props) => {
       bio: { content },
     },
   } = about[0];
-
   const useableURL = 'https' + url;
+
   if (isLoading) {
     return 'Loading...';
   }

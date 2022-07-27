@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { fetchContent } from './utils/content-utils';
-import { Project } from './Project';
 
 export const CvLayout = (props) => {
-  const [projects, setProjects] = useState(null);
+  const [cvItems, setCVItems] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     document.title = 'CV | Kyle Lee';
     const getData = async () => {
-      const projects = await fetchContent({ content_type: 'project' });
-      setProjects(projects);
+      const cvItems = await fetchContent({ content_type: 'cv' });
+      setCVItems(cvItems);
       setIsLoading(false);
     };
     getData();
@@ -18,7 +17,17 @@ export const CvLayout = (props) => {
   if (isLoading) {
     return null;
   }
-  return projects?.map((project, i) => {
-    return <Project key={i} project={project} />;
-  });
+
+  const downloadURL = 'https:' + cvItems[0].fields.file.fields.file.url;
+  return (
+    <>
+      {cvItems?.map((item, i) => {
+        return (
+          <a href={downloadURL} download>
+            {cvItems[0].fields.cv}
+          </a>
+        );
+      })}
+    </>
+  );
 };

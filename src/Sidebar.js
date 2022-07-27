@@ -7,7 +7,7 @@ export const Sidebar = (props) => {
   return (
     <ul>
       {navBarItems
-        .sort((a, b) => a.fields.id - b.fields.id) //sort by ID
+        ?.sort((a, b) => a.fields.id - b.fields.id) //sort by ID
         .map((navItem, i) => {
           return <SidebarLink key={i} navItem={navItem} />;
         })}
