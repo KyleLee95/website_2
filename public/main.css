@@ -1,8 +1,14 @@
 /*!*******************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/App.scss ***!
   \*******************************************************************************************************/
-html * {
+html,
+body {
   font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+}
+
+#app {
+  height: 100%;
 }
 
 h1 {
@@ -12,7 +18,8 @@ h1 {
 /*Large screens*/
 .grid-container {
   display: grid;
-  grid-template-columns: 0.25fr repeat(2, 1fr);
+  height: 100%;
+  grid-template-columns: 0.25fr 1fr 0.25fr;
 }
 
 .content {
