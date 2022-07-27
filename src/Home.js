@@ -4,7 +4,7 @@ import { OrbitControls } from '@react-three/drei'
 
 function Box(props) {
   const { x, y, z, color, size } = props.box
-  console.log([x, y, z])
+
   // This reference gives us direct access to the THREE.Mesh object
 
   // Hold state for hovered and clicked events
