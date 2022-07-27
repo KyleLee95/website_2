@@ -10,7 +10,8 @@
     "start-dev": "NODE_ENV='development' npm run build-client-watch & NODE_ENV='development' npm run start-server",
     "test": "NODE_ENV='test' mocha \"./server/**/*.spec.js\" \"./src/**/*.spec.js\" \"./script/**/*.spec.js\"",
     "start": "node ./server/index.js",
-    "seed": "node ./scripts/seed.js"
+    "seed": "node ./scripts/seed.js",
+    "postinstall": "touch secrets.js && (cp -n src/.env || true)"
   },
   "repository": {
     "type": "git",
