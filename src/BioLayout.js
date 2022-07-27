@@ -1,22 +1,22 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { fetchContent } from './utils/content-utils';
-import { Paragraph } from './components/Paragraph';
+import React, { useEffect, useState, useContext } from 'react'
+import { fetchContent } from './utils/content-utils'
+import { Paragraph } from './components/Paragraph'
 
 export const BioLayout = (props) => {
-  const [about, setAbout] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [about, setAbout] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    document.title = 'Bio | Kyle Lee';
+    document.title = 'About | Kyle Lee'
     const getData = async () => {
-      const about = await fetchContent({ content_type: 'about' });
-      setAbout(about);
-      setIsLoading(false);
-    };
-    getData();
-  }, []);
+      const about = await fetchContent({ content_type: 'about' })
+      setAbout(about)
+      setIsLoading(false)
+    }
+    getData()
+  }, [])
   if (!about) {
-    return null;
+    return null
   }
   //destructuring
   const {
@@ -25,30 +25,30 @@ export const BioLayout = (props) => {
         fields: {
           file: {
             url,
-            details: { image },
-          },
-        },
+            details: { image }
+          }
+        }
       },
-      bio: { content },
-    },
-  } = about[0];
-  const useableURL = 'https' + url;
+      bio: { content }
+    }
+  } = about[0]
+  const useableURL = 'https' + url
 
   if (isLoading) {
-    return 'Loading...';
+    return 'Loading...'
   }
   return (
     <div>
       <img
         src={`https:${url}`}
         alt="me"
-        width={image.width / 6}
-        height={image.height / 6}
+        width={image.width / 9}
+        height={image.height / 9}
       />
 
       {content.map((paragraph, i) => {
-        return <Paragraph key={i} text={paragraph} />;
+        return <Paragraph key={i} text={paragraph} />
       })}
     </div>
-  );
-};
+  )
+}

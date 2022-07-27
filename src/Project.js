@@ -1,23 +1,23 @@
-import React from 'react';
-import { RichText } from './components/RichText';
+import React from 'react'
+import { RichText } from './components/RichText'
 
 export const Project = (props) => {
   const {
-    project: { fields },
-  } = props;
+    project: { fields }
+  } = props
   const {
     description: { content },
     title,
-    url,
-  } = fields;
+    url
+  } = fields
 
   return (
     <div>
-      <h3>{title}</h3>
+      <div style={{ fontWeight: 'bold' }}>{title}</div>
       <RichText text={content[0]} />
       <a href={url} target="_blank">
         {url}
       </a>
     </div>
-  );
-};
+  )
+}
