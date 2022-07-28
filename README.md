@@ -1,5 +1,3 @@
-# roll-your-own
+# Personal Website v2
 
-Inspired by Boilermaker (https://github.com/FullstackAcademy/boilermaker)
-
-Updated to reflect my personal technologies of choice.
+Built with my personal boilerplate code called [roll-your-own]](https://github.com/KyleLee95/roll-your-own/settings).
