@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls } from '@react-three/drei'
+import { OrbitControls, PerspectiveCamera } from '@react-three/drei'
 
+const RelativeCamera = React.memo(function RelativeCamera(props) {
+  // modified version of code from partynikko from this github issue: https://github.com/pmndrs/react-three-fiber/issues/67#issuecomment-496507403
+
+  return <PerspectiveCamera makeDefault position={[-30, 20, 100]} />
+})
 function Box(props) {
   const { x, y, z, color, size } = props.box
 
@@ -81,6 +86,7 @@ export const Home = () => {
   return (
     <div style={{ height: '75%', width: '100%' }}>
       <Canvas>
+        <RelativeCamera />
         <axesHelper args={[100, 100, 100]} />
         <gridHelper args={[100, 100]} />
         <OrbitControls makeDefault position={[100, 100, 100]} />
